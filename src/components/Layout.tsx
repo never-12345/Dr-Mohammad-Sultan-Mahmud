@@ -25,7 +25,7 @@ export function Layout({ children }: { children: ReactNode }) {
 
       <Navbar />
       
-      <main className="flex-1 w-full max-w-6xl mx-auto px-4 md:px-8 py-8 md:py-12 relative z-10">
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 md:px-8 py-4 md:py-6 relative z-10">
         {children}
       </main>
       
