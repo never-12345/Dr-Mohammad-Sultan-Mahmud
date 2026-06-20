@@ -1,6 +1,6 @@
 export const profileData = {
   name: "Dr. Mohammad Sultan Mahmud",
-  title: "Associate Professor",
+  title: "Associate Professor of Software Engineering",
   affiliations: [
     {
       university: "Daffodil International University",
@@ -13,7 +13,7 @@ export const profileData = {
   ],
   email: "mahmudsultan@sztu.edu.cn",
   phone: "",
-  bio: `I am an Associate Professor of Computer Science, currently holding academic and research affiliations with Daffodil International University (Bangladesh) and Shenzhen Technology University (China). Previously, I served as an Associate Researcher with the College of Computer Science and Software Engineering at Shenzhen University.\n\nI received my Ph.D. degree in Computer Science from Shenzhen University, China, in 2023, and my Master's degree in Computer Science from King Mongkut's University of Technology North Bangkok, Thailand, in 2014.\n\nMy research focuses on Big Data Mining, Distributed & Parallel Computing, and Ensemble Learning. I have published research articles in esteemed journals such as Information Fusion, IEEE Transactions on Big Data, Big Data Mining and Analytics, and the Journal of Big Data. I am also actively involved in academic service as a guest editor and reviewer for various top-tier journals.`,
+  bio: `I am an Associate Professor of Software Engineering, currently holding academic and research affiliations with Daffodil International University (Bangladesh) and Shenzhen Technology University (China). Previously, I served as an Associate Researcher with the College of Computer Science and Software Engineering at Shenzhen University.\n\nI received my Ph.D. degree in Computer Science from Shenzhen University, China, in 2023, and my Master's degree in Computer Science from King Mongkut's University of Technology North Bangkok, Thailand, in 2014.\n\nMy research focuses on Big Data Mining, Distributed & Parallel Computing, and Ensemble Learning. I have published research articles in esteemed journals such as Information Fusion, IEEE Transactions on Big Data, Big Data Mining and Analytics, and the Journal of Big Data. I am also actively involved in academic service as a guest editor and reviewer for various top-tier journals.`,
   degrees: [
     {
       degree: "Ph.D. in Computer Science",
