@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Calendar, Users, Award } from 'lucide-react';
 import { profileData } from '../data/content';
 
 export function Publications() {
@@ -69,56 +69,100 @@ export function Publications() {
     }
   ];
 
+  // Helper to format authors list and bold "Mohammad Sultan Mahmud"
+  const renderContributors = (contributorsList: string) => {
+    const parts = contributorsList.split(/(Mohammad Sultan Mahmud)/);
+    return (
+      <span className="flex items-center gap-1.5 text-xs text-slate-500 font-medium leading-relaxed">
+        <Users size={12} className="text-slate-400 shrink-0" />
+        <span>
+          {parts.map((part, i) => 
+            part === "Mohammad Sultan Mahmud" 
+              ? <strong key={i} className="text-indigo-600 font-bold">{part}</strong> 
+              : part
+          )}
+        </span>
+      </span>
+    );
+  };
+
+  // Group publications by year
+  const years = Array.from(new Set(publications.map(p => p.year))).sort((a, b) => b.localeCompare(a));
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
-      className="max-w-5xl mx-auto px-4 py-12"
+      className="max-w-5xl mx-auto px-4 py-8"
     >
-      <div className="mb-8">
+      <div className="mb-10">
         <h1 className="text-4xl font-bold tracking-tight text-slate-900">Selected Publications</h1>
+        <p className="text-lg text-slate-500 mt-3 leading-relaxed">
+          For a complete and up-to-date list of publications, please visit my{' '}
+          <a href={profileData.scholarUrl} target="_blank" rel="noopener noreferrer" className="text-indigo-600 font-semibold hover:underline">
+            Google Scholar
+          </a>{' '}
+          or{' '}
+          <a href={profileData.researchGateUrl} target="_blank" rel="noopener noreferrer" className="text-indigo-600 font-semibold hover:underline">
+            ResearchGate
+          </a>{' '}
+          profiles.
+        </p>
       </div>
 
-      <p className="text-lg text-slate-600 mb-8">
-        For a complete and up-to-date list of my publications, please visit my{' '}
-        <a href={profileData.scholarUrl} target="_blank" rel="noopener noreferrer" className="text-accent font-medium hover:underline">
-          Google Scholar
-        </a>{' '}
-        or{' '}
-        <a href={profileData.researchGateUrl} target="_blank" rel="noopener noreferrer" className="text-accent font-medium hover:underline">
-          ResearchGate
-        </a>{' '}
-        profiles.
-      </p>
-
-      <div className="space-y-6">
-        {publications.map((pub, idx) => (
-          <motion.div 
-            key={idx}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: idx * 0.1 }}
-            className="p-6 bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group"
-          >
-            <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-accent transition-colors">
-              {pub.title}
-            </h3>
-            <p className="text-slate-500 text-sm mb-1">
-              {pub.contributors}
-            </p>
-            <p className="text-slate-600 mb-4">
-              <span className="italic font-medium">{pub.journal}</span> • {pub.year}
-            </p>
-            <a 
-              href={`https://doi.org/${pub.doi}`} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent-hover font-medium transition-colors"
-            >
-              DOI: {pub.doi} <ExternalLink className="w-4 h-4" />
-            </a>
-          </motion.div>
+      <div className="space-y-12">
+        {years.map((year) => (
+          <div key={year} className="space-y-6">
+            <h2 className="text-2xl font-bold text-slate-900 border-b border-slate-200/80 pb-2 flex items-center gap-2 font-display">
+              <Calendar className="text-indigo-500" size={20} />
+              {year}
+            </h2>
+            
+            <div className="grid grid-cols-1 gap-6">
+              {publications
+                .filter(pub => pub.year === year)
+                .map((pub, idx) => (
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05 }}
+                    className="glass-card p-6 rounded-3xl shadow-2xs hover:shadow-sm hover:border-indigo-200/60 transition-all duration-300 group flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
+                  >
+                    <div className="space-y-2 flex-1">
+                      <h3 className="text-lg font-bold text-slate-900 leading-snug group-hover:text-indigo-600 transition-colors">
+                        {pub.title}
+                      </h3>
+                      <div className="flex flex-col gap-1.5">
+                        {renderContributors(pub.contributors)}
+                        <div className="flex items-center gap-2 text-xs text-slate-500">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-indigo-50/50 text-indigo-700 font-bold rounded-md border border-indigo-100/30">
+                            {pub.journal}
+                          </span>
+                          {pub.journal.includes('Information Fusion') && (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-amber-50 text-amber-700 font-bold rounded-md border border-amber-100">
+                              <Award size={10} /> IF: 14.7
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <a 
+                      href={`https://doi.org/${pub.doi}`} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-indigo-600 text-slate-500 hover:text-white border border-slate-100 hover:border-indigo-600 rounded-xl text-xs font-bold transition-all duration-300 shadow-3xs shrink-0 self-end md:self-center"
+                    >
+                      <span>DOI Link</span>
+                      <ExternalLink size={12} />
+                    </a>
+                  </motion.div>
+                ))}
+            </div>
+          </div>
         ))}
       </div>
     </motion.div>

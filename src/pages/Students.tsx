@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import { UserCircle, GraduationCap } from 'lucide-react';
+import { UserCircle, GraduationCap, Sparkles } from 'lucide-react';
 import { studentsData } from '../data/content';
 
 export function Students() {
   const categories = [
-    { title: "Ph.D. Students", data: studentsData.phd, border: "border-emerald-200", bg: "bg-emerald-50" },
-    { title: "Master's Students", data: studentsData.masters, border: "border-blue-200", bg: "bg-blue-50" },
-    { title: "Undergraduate Students", data: studentsData.undergrad, border: "border-indigo-200", bg: "bg-indigo-50" },
+    { title: "Ph.D. Students", data: studentsData.phd, tagColor: "bg-emerald-50 text-emerald-700 border-emerald-100/50" },
+    { title: "Master's Students", data: studentsData.masters, tagColor: "bg-sky-50 text-sky-700 border-sky-100/50" },
+    { title: "Undergraduate Students", data: studentsData.undergrad, tagColor: "bg-indigo-50 text-indigo-700 border-indigo-100/50" },
   ];
 
   return (
@@ -14,22 +14,20 @@ export function Students() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
-      className="max-w-5xl mx-auto px-4 py-12"
+      className="max-w-5xl mx-auto px-4 py-8"
     >
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold tracking-tight text-slate-900">Research Group</h1>
+      <div className="mb-10">
+        <h1 className="text-4xl font-bold tracking-tight text-slate-900 font-display">Research Group</h1>
+        <p className="text-lg text-slate-500 mt-4 max-w-3xl leading-relaxed">
+          I am fortunate to work with highly motivated students at various levels. If you are interested in joining our group, please read the instructions for Prospective Students on the home page.
+        </p>
       </div>
 
-      <p className="text-lg text-slate-600 mb-12 max-w-3xl leading-relaxed">
-        I am fortunate to work with an amazing group of students at various levels. 
-        If you are interested in joining our group, please refer to the instructions for Prospective Students on the home page.
-      </p>
-
-      <div className="space-y-16">
+      <div className="space-y-12">
         {categories.map((category, idx) => (
-          <section key={idx}>
-            <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2 border-b border-slate-200 pb-2">
-              <GraduationCap className="text-slate-400" /> {category.title}
+          <section key={idx} className="space-y-6">
+            <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2 border-b border-slate-100 pb-3 font-display uppercase tracking-wider text-xs">
+              <GraduationCap className="text-indigo-500" size={16} /> {category.title}
             </h2>
             
             {category.data.length > 0 ? (
@@ -40,26 +38,29 @@ export function Students() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: sIdx * 0.1 }}
-                    className={`p-6 rounded-2xl border ${category.border} ${category.bg} shadow-sm group hover:shadow-md transition-shadow`}
+                    transition={{ delay: sIdx * 0.05 }}
+                    className="glass-card p-5 rounded-3xl shadow-2xs hover:shadow-sm hover:border-indigo-200/50 transition-all duration-300 group flex items-start gap-4"
                   >
-                    <div className="flex items-start gap-4">
-                      <UserCircle className="w-12 h-12 text-slate-400 mix-blend-multiply opacity-50 shrink-0 group-hover:text-accent transition-colors" />
-                      <div>
-                        <h3 className="text-xl font-bold text-slate-900">{student.name}</h3>
-                        <span className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide bg-white text-slate-600 border border-slate-200 mb-3 shadow-xs">
-                          {student.status}
-                        </span>
-                        <p className="text-sm font-medium text-slate-700 leading-snug">
-                          {student.research}
-                        </p>
-                      </div>
+                    <div className="w-12 h-12 rounded-2xl bg-indigo-50/50 flex items-center justify-center text-indigo-500 shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
+                      <UserCircle size={24} className="shrink-0" />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="text-base font-bold text-slate-900 leading-snug group-hover:text-indigo-600 transition-colors truncate">{student.name}</h3>
+                      <span className={`inline-flex items-center gap-1 mt-1.5 px-2 py-0.5 rounded-md text-[10px] font-bold tracking-wide border ${category.tagColor}`}>
+                        <Sparkles size={8} />
+                        {student.status}
+                      </span>
+                      <p className="text-xs font-semibold text-slate-400 mt-3 leading-relaxed">
+                        Focus: {student.research}
+                      </p>
                     </div>
                   </motion.div>
                 ))}
               </div>
             ) : (
-              <p className="text-slate-500 italic">No current students in this category.</p>
+              <div className="glass-card p-6 rounded-2xl border border-slate-100 flex items-center justify-center text-center">
+                <p className="text-slate-400 text-xs italic font-medium">No current students in this category at this time.</p>
+              </div>
             )}
           </section>
         ))}

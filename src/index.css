@@ -1,21 +1,40 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Outfit", system-ui, sans-serif;
   --color-primary: #0f172a;
   --color-secondary: #475569;
-  --color-accent: #2563eb;
-  --color-accent-hover: #1d4ed8;
-  --color-background-light: #f8fafc;
+  --color-accent: #4f46e5;
+  --color-accent-hover: #4338ca;
+  --color-accent-glow: rgba(79, 70, 229, 0.15);
+  --color-background-light: #fafbfd;
 }
 
 @layer base {
   body {
-    @apply bg-background-light text-slate-800 antialiased selection:bg-accent selection:text-white leading-relaxed;
+    @apply bg-background-light text-slate-700 antialiased selection:bg-accent selection:text-white leading-relaxed;
     font-family: var(--font-sans);
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight text-primary;
+    font-family: var(--font-display);
   }
 }
+
+/* Glassmorphism card utility */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-indigo-950 to-indigo-600;
+}
+
+.accent-gradient {
+  @apply bg-gradient-to-r from-indigo-600 to-blue-600;
+}
+
