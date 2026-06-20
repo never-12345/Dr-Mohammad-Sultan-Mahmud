@@ -14,6 +14,32 @@ export const profileData = {
   email: "mahmudsultan@sztu.edu.cn",
   phone: "",
   bio: "Mohammad Sultan Mahmud received the Ph.D. degree from Shenzhen University, China, in 2023 and the master's degree from King Mongkut's University of Technology North Bangkok, Thailand, in 2014. Currently, Dr. Sultan is an Associate Researcher with the College of Computer Science and Software Engineering, Shenzhen University, China. He has published research articles in esteemed journals such as Information Fusion, IEEE Transactions on Big Data, Big Data Mining and Analytics, and the Journal of Big Data. His current research focuses on big data mining, distributed and parallel computing, and ensemble learning.",
+  degrees: [
+    {
+      degree: "Ph.D. in Computer Science",
+      institution: "Shenzhen University",
+      year: "2023"
+    },
+    {
+      degree: "M.S. in Computer Science",
+      institution: "King Mongkut's University of Technology North Bangkok",
+      year: "2014"
+    }
+  ],
+  researchInterests: [
+    "Big Data Mining",
+    "Distributed & Parallel Computing",
+    "Ensemble Learning",
+    "Computational Intelligence",
+    "Predictive Modeling"
+  ],
+  teachingInterests: [
+    "Big Data Analysis",
+    "Machine Learning",
+    "Parallel & Distributed Computing",
+    "Algorithms & Data Structures",
+    "Software Engineering"
+  ],
   scholarUrl: "https://scholar.google.com/citations?user=EARbYYsAAAAJ&hl=en",
   githubUrl: "#",
   linkedinUrl: "http://www.linkedin.com/in/sultan-mahmud-phd",

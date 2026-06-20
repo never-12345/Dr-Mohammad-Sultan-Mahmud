@@ -1,12 +1,14 @@
 import { type ReactNode } from 'react';
 import { Navbar } from './Navbar';
 import { profileData } from '../data/content';
-import { GraduationCap, FileText, Globe, Link as LinkIcon } from 'lucide-react';
+import { GraduationCap, FileText, Globe, Link as LinkIcon, Award, Database } from 'lucide-react';
 
 export function Layout({ children }: { children: ReactNode }) {
   const socialLinks = [
-    { url: profileData.scholarUrl, label: "Scholar", icon: <GraduationCap size={16} /> },
+    { url: profileData.scholarUrl, label: "Google Scholar", icon: <GraduationCap size={16} /> },
     { url: profileData.researchGateUrl, label: "ResearchGate", icon: <Globe size={16} /> },
+    { url: profileData.wosUrl, label: "Web of Science", icon: <Award size={16} /> },
+    { url: profileData.scopusUrl, label: "Scopus", icon: <Database size={16} /> },
     { url: profileData.linkedinUrl, label: "LinkedIn", icon: <LinkIcon size={16} /> },
     { url: profileData.githubUrl, label: "GitHub", icon: <LinkIcon size={16} /> },
     { url: profileData.orcidUrl, label: "ORCID", icon: <LinkIcon size={16} /> },

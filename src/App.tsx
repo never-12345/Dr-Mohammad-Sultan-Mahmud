@@ -5,6 +5,7 @@ import { Publications } from './pages/Publications';
 import { Students } from './pages/Students';
 import { Teaching } from './pages/Teaching';
 import { Services } from './pages/Services';
+import { News } from './pages/News';
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/news" element={<News />} />
           <Route path="/teaching" element={<Teaching />} />
           <Route path="/publications" element={<Publications />} />
           <Route path="/services" element={<Services />} />
