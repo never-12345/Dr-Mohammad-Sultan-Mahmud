@@ -29,35 +29,33 @@ export function Layout({ children }: { children: ReactNode }) {
         {children}
       </main>
       
-      <footer className="w-full bg-slate-950 text-white border-t border-slate-900 py-16 text-sm mt-12 relative z-10">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col items-center gap-10">
+      <footer className="w-full bg-slate-950 text-white border-t border-slate-800/60 py-5 relative z-10">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           
-          {/* Social Icons Section */}
-          <div className="flex flex-wrap justify-center gap-4">
+          {/* Social links — compact pills */}
+          <div className="flex flex-wrap justify-center gap-2">
             {socialLinks.map((link, idx) => (
-              <a 
-                key={idx} 
-                href={link.url} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="group flex items-center gap-2 px-4 py-2 bg-slate-900/60 hover:bg-indigo-950 border border-slate-800/80 hover:border-indigo-800/50 rounded-xl hover:text-white transition-all duration-300 shadow-xs hover:shadow-md"
+              <a
+                key={idx}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-1.5 px-2.5 py-1 bg-slate-900/60 hover:bg-indigo-950 border border-slate-800/60 hover:border-indigo-700/50 rounded-lg transition-all duration-200"
               >
-                <div className="w-6 h-6 flex items-center justify-center text-slate-400 group-hover:text-indigo-400 transition-colors">
+                <span className="text-slate-500 group-hover:text-indigo-400 transition-colors" style={{ fontSize: 13 }}>
                   {link.icon}
-                </div>
-                <span className="font-semibold text-xs tracking-wide text-slate-300 group-hover:text-white transition-colors">{link.label}</span>
+                </span>
+                <span className="text-[10px] font-semibold tracking-wide text-slate-400 group-hover:text-white transition-colors hidden sm:inline">
+                  {link.label}
+                </span>
               </a>
             ))}
           </div>
 
-          <div className="text-center space-y-3">
-            <p className="text-slate-400 text-xs">© {new Date().getFullYear()} {profileData.name}. All rights reserved.</p>
-            <div className="flex items-center justify-center gap-1.5 text-slate-500 text-xs font-semibold uppercase tracking-wider">
-              <span>Daffodil International University</span>
-              <span className="text-slate-700">•</span>
-              <span>Shenzhen Technology University</span>
-            </div>
-          </div>
+          {/* Copyright */}
+          <p className="text-slate-500 text-[10px] font-medium text-center sm:text-right whitespace-nowrap">
+            © {new Date().getFullYear()} {profileData.name} &nbsp;·&nbsp; DIU &amp; SZTU
+          </p>
         </div>
       </footer>
     </div>
