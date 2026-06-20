@@ -1,10 +1,19 @@
 import { motion } from 'framer-motion';
 import {
   MapPin, Mail, GraduationCap, BrainCircuit, BookOpen,
-  ExternalLink, Sparkles, Newspaper,
+  ExternalLink, Sparkles, Newspaper, Home as HomeIcon, Users, FileText,
 } from 'lucide-react';
 import { profileData, newsItems } from '../data/content';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
+const NAV_ITEMS = [
+  { name: 'Home',           path: '/',            icon: <HomeIcon size={14} /> },
+  { name: 'News & Events',  path: '/news',        icon: <Newspaper size={14} /> },
+  { name: 'Teaching',       path: '/teaching',    icon: <GraduationCap size={14} /> },
+  { name: 'Publications',   path: '/publications',icon: <FileText size={14} /> },
+  { name: 'Services',       path: '/services',    icon: <Users size={14} /> },
+  { name: 'Students',       path: '/students',    icon: <Users size={14} /> },
+];
 
 /* ─── tiny animation helpers ─── */
 const fadeUp = (delay = 0) => ({
@@ -20,6 +29,7 @@ const fadeRight = (delay = 0) => ({
 
 
 export function Home() {
+  const location = useLocation();
   return (
     /* ── outermost wrapper – two-column at lg ── */
     <div className="home-grid">
@@ -100,6 +110,31 @@ export function Home() {
             ))}
           </div>
         </section>
+
+        <div className="sidebar-divider" />
+
+        {/* ── navigation ── */}
+        <nav className="sidebar-section">
+          <h3 className="section-label">
+            <HomeIcon size={11} className="text-indigo-500" />
+            Navigation
+          </h3>
+          <ul className="sidebar-nav-list">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.path}>
+                <Link
+                  to={item.path}
+                  className={`sidebar-nav-link${
+                    location.pathname === item.path ? ' sidebar-nav-link--active' : ''
+                  }`}
+                >
+                  <span className="sidebar-nav-icon">{item.icon}</span>
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </motion.aside>
 
       {/* ════════════════════════════════════════════════
@@ -110,10 +145,8 @@ export function Home() {
         {/* ── hero ── */}
         <motion.section className="hero-section" {...fadeUp(0.05)}>
           <div>
-            <p className="hero-eyebrow">Associate Professor</p>
             <h1 className="hero-title">
-              Dr. Mohammad{' '}
-              <span className="gradient-text">Sultan Mahmud</span>
+              Dr. Mohammad Sultan Mahmud
             </h1>
             <p className="hero-sub">
               Researcher in Big Data Mining, Distributed Computing &amp; Ensemble Learning.
