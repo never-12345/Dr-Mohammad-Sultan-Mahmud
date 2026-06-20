@@ -43,7 +43,7 @@ export function Home() {
           <div className="sidebar-identity">
             <span className="sidebar-badge">
               <Sparkles size={10} className="animate-pulse opacity-70" />
-              {profileData.title}
+              Associate Professor
             </span>
             <a href={`mailto:${profileData.email}`} className="sidebar-email">
               <Mail size={11} />
