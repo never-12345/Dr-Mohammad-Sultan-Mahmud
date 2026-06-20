@@ -12,7 +12,7 @@ export function Services() {
     >
       <header className="mb-8">
         <h1 className="text-4xl font-bold tracking-tight text-slate-900 font-display">Professional Services</h1>
-        <p className="text-lg text-slate-500 mt-4 leading-relaxed">
+        <p className="text-lg text-slate-600 mt-4 leading-relaxed">
           Contributions to the global academic community through editorial leadership, journal reviewing, and conference organization.
         </p>
       </header>
@@ -36,8 +36,8 @@ export function Services() {
                   <h3 className="text-base font-bold text-slate-900 mb-1 leading-snug group-hover:text-indigo-600 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-slate-500 text-sm font-semibold mb-2">{item.journal}</p>
-                  <p className="text-slate-400 text-xs leading-relaxed">{item.details}</p>
+                  <p className="text-slate-600 text-sm font-semibold mb-2">{item.journal}</p>
+                  <p className="text-slate-500 text-xs leading-relaxed">{item.details}</p>
                 </div>
               ))}
             </div>
@@ -52,7 +52,7 @@ export function Services() {
             </div>
             Journal Reviewing
           </h2>
-          <p className="text-slate-400 text-xs mb-4 leading-relaxed font-medium">Regular peer-reviewer for esteemed scientific journals:</p>
+          <p className="text-slate-600 text-xs mb-4 leading-relaxed font-semibold">Regular peer-reviewer for esteemed scientific journals:</p>
           <div className="grid grid-cols-1 gap-2">
             {servicesData.journalReviewer.map((journal, idx) => (
               <div key={idx} className="flex items-center gap-2.5 p-2 bg-slate-50/50 hover:bg-indigo-50 border border-slate-100 hover:border-indigo-100 rounded-xl text-slate-600 hover:text-indigo-800 transition-all duration-300">

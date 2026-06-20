@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion';
 import {
-  MapPin, Mail, GraduationCap, Award, BookOpen,
-  BrainCircuit, ExternalLink, Database,
-  Link as LinkIcon, Sparkles, Newspaper, ArrowUpRight,
+  MapPin, Mail, GraduationCap, BrainCircuit, BookOpen,
+  ExternalLink, Sparkles, Newspaper,
 } from 'lucide-react';
-import { profileData, newsItems, mediaItems } from '../data/content';
+import { profileData, newsItems } from '../data/content';
 import { Link } from 'react-router-dom';
 
 /* ─── tiny animation helpers ─── */
@@ -20,21 +19,7 @@ const fadeRight = (delay = 0) => ({
 });
 
 
-/* ─── academic profile links ─── */
-const PROFILE_LINKS = [
-  { key: 'scholarUrl',     label: 'Scholar',     icon: <GraduationCap size={12} />, pill: 'bg-amber-100 text-amber-700 border-amber-200'   },
-  { key: 'researchGateUrl',label: 'ResearchGate',icon: <BrainCircuit  size={12} />, pill: 'bg-teal-100  text-teal-700  border-teal-200'    },
-  { key: 'wosUrl',         label: 'WoS',         icon: <Award         size={12} />, pill: 'bg-violet-100 text-violet-700 border-violet-200' },
-  { key: 'scopusUrl',      label: 'Scopus',      icon: <Database      size={12} />, pill: 'bg-sky-100   text-sky-700   border-sky-200'      },
-  { key: 'orcidUrl',       label: 'ORCID',       icon: <LinkIcon      size={12} />, pill: 'bg-emerald-100 text-emerald-700 border-emerald-200'},
-  { key: 'dblpUrl',        label: 'DBLP',        icon: <BookOpen      size={12} />, pill: 'bg-slate-100  text-slate-700  border-slate-200'  },
-] as const;
-
 export function Home() {
-  const links = PROFILE_LINKS
-    .map(l => ({ ...l, url: profileData[l.key as keyof typeof profileData] as string }))
-    .filter(l => l.url && l.url !== '#');
-
   return (
     /* ── outermost wrapper – two-column at lg ── */
     <div className="home-grid">
@@ -116,26 +101,6 @@ export function Home() {
             ))}
           </div>
         </section>
-
-        <div className="sidebar-divider" />
-
-        {/* ── academic profiles ── */}
-        <section className="sidebar-section">
-          <h3 className="section-label">
-            <LinkIcon size={11} className="text-indigo-500" />
-            Academic Profiles
-          </h3>
-          <div className="profile-grid">
-            {links.map((l, i) => (
-              <a key={i} href={l.url} target="_blank" rel="noopener noreferrer"
-                className={`profile-pill ${l.pill}`}>
-                {l.icon}
-                <span>{l.label}</span>
-                <ArrowUpRight size={9} className="ml-auto opacity-50" />
-              </a>
-            ))}
-          </div>
-        </section>
       </motion.aside>
 
       {/* ════════════════════════════════════════════════
@@ -184,7 +149,7 @@ export function Home() {
           </div>
         </motion.section>
 
-        {/* ── three-panel bottom row ── */}
+        {/* ── single-panel bottom row ── */}
         <div className="panels-row">
 
           {/* NEWS */}
@@ -206,41 +171,6 @@ export function Home() {
                 </li>
               ))}
             </ol>
-          </motion.section>
-
-          {/* RESEARCH THEMES */}
-          <motion.section className="panel panel-themes" {...fadeUp(0.22)}>
-            <div className="panel-header themes-header">
-              <span className="panel-title text-white">Research Themes</span>
-            </div>
-            <div className="themes-grid">
-              {mediaItems.map((m, i) => (
-                <div key={i} className="theme-card">
-                  <img src={m.url} alt={m.title} className="theme-img" />
-                  <div className="theme-overlay">
-                    <p className="theme-label">{m.title}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* OPEN POSITIONS */}
-          <motion.section className="panel panel-positions" {...fadeUp(0.26)}>
-            <div className="positions-icon-row">
-              <div className="positions-icon">
-                <Sparkles size={18} className="text-indigo-600" />
-              </div>
-            </div>
-            <h2 className="positions-title">Open Positions</h2>
-            <p className="positions-body">
-              Looking for motivated Ph.D. students in <strong>Data Mining</strong>,{' '}
-              <strong>Machine Learning</strong> &amp; <strong>Big Data Analysis</strong>.
-              Read my recent papers and reach out!
-            </p>
-            <a href={`mailto:${profileData.email}`} className="positions-cta">
-              <Mail size={12} /> Contact Me
-            </a>
           </motion.section>
 
         </div>

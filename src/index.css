@@ -443,10 +443,10 @@
   font-weight: 450;
 }
 
-/* ── three bottom panels ── */
+/* ── single bottom panel ── */
 .panels-row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 0.85rem;
   flex: 1;
 }
