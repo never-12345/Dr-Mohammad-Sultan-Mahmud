@@ -143,8 +143,8 @@ export function Home() {
         <motion.section className="about-strip" {...fadeUp(0.12)}>
           <div className="about-accent" />
           <div className="about-body">
-            <h3 className="about-heading">About</h3>
-            <p className="about-text line-clamp-3">{profileData.bio}</p>
+            <h3 className="about-heading">About Me</h3>
+            <p className="about-text">{profileData.bio}</p>
           </div>
         </motion.section>
 
