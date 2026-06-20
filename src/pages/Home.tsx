@@ -41,7 +41,6 @@ export function Home() {
           </div>
 
           <div className="sidebar-identity">
-            <h2 className="sidebar-name">{profileData.name}</h2>
             <span className="sidebar-badge">
               <Sparkles size={10} className="animate-pulse opacity-70" />
               {profileData.title}
@@ -111,6 +110,7 @@ export function Home() {
         {/* ── hero ── */}
         <motion.section className="hero-section" {...fadeUp(0.05)}>
           <div>
+            <p className="hero-eyebrow">Associate Professor</p>
             <h1 className="hero-title">
               Dr. Mohammad{' '}
               <span className="gradient-text">Sultan Mahmud</span>
